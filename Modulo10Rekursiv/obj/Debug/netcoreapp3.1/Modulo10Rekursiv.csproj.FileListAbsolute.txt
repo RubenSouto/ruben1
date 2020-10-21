@@ -1,0 +1,11 @@
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.exe
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.deps.json
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.runtimeconfig.json
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.runtimeconfig.dev.json
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.dll
+C:\TKB\Modulo10Rekursiv\bin\Debug\netcoreapp3.1\Modulo10Rekursiv.pdb
+C:\TKB\Modulo10Rekursiv\obj\Debug\netcoreapp3.1\Modulo10Rekursiv.csprojAssemblyReference.cache
+C:\TKB\Modulo10Rekursiv\obj\Debug\netcoreapp3.1\Modulo10Rekursiv.AssemblyInfoInputs.cache
+C:\TKB\Modulo10Rekursiv\obj\Debug\netcoreapp3.1\Modulo10Rekursiv.AssemblyInfo.cs
+C:\TKB\Modulo10Rekursiv\obj\Debug\netcoreapp3.1\Modulo10Rekursiv.dll
+C:\TKB\Modulo10Rekursiv\obj\Debug\netcoreapp3.1\Modulo10Rekursiv.pdb
