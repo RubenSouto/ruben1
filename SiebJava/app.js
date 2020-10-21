@@ -1,9 +1,13 @@
+/**
+ * Erstellt Array mit allen Zahlen 
+ * @param {*} max 
+ */
 function Sieb(max) {
     var numbers = [];
     var primZahlen = [];
 
-    for(var i= 0; i <= max; i++){
-        numbers[i] = i;
+    for(var i= 2; i <= max; i++){
+        numbers.push(i);
     }
 
     while (numbers.length > 0) {
@@ -18,3 +22,7 @@ function Sieb(max) {
     return primZahlen;
 }
 console.log(Sieb(200));
+
+function KastenErstellen(params) {
+    
+}
