@@ -1,6 +1,8 @@
+
+
 /**
  * Erstellt Array mit allen Zahlen 
- * @param {*} max 
+ * @param {number} max 
  */
 function Sieb(max) {
     var numbers = [];
@@ -21,8 +23,13 @@ function Sieb(max) {
     }
     return primZahlen;
 }
-console.log(Sieb(200));
 
-function KastenErstellen(params) {
-    
+
+function KastenErstellen(){
+    var max = document.getElementById("userInput").value;
+    var array = Sieb(max);
+    for(var i = 0; i < array.length; i++){
+        document.getElementById("zahlen").innerHTML += array[i];
+        console.log(i);
+    }
 }
