@@ -14,24 +14,35 @@ function Sieb(max) {
         numbers.push(i);
     }
 
-    document.getElementById("zahlen").innerHTML = numbers;
+    //document.getElementById("zahlen").innerHTML = numbers;
 
     while (numbers.length > 0) {
         primZahlen.push(numbers.shift());
 
-        for (var i = 0; i <= numbers.length; i++){
-            if (numbers[i] % primZahlen[primZahlen.length - 1] == 0){
-                numbers.splice(i, 1);
+        document.getElementById("zahlen").innerHTML = "";
+        document.getElementById("primZahlen").innerHTML = "";    
+
+        await setTimeout(() => {
+            document.getElementById("primZahlen").innerHTML = primZahlen;
+            document.getElementById("zahlen").innerHTML = numbers;
+        }, 3000);
+
+        await setTimeout(() => {
+            for (var i = 0; i <= numbers.length; i++){
+                if (numbers[i] % primZahlen[primZahlen.length - 1] == 0){
+                    numbers.splice(i, 1);
+                }
             }
-        }
+        }, 3000);
     }
-    document.getElementById("primZahlen").innerHTML = primZahlen;
+    //document.getElementById("primZahlen").innerHTML = primZahlen;
     return primZahlen;
 }
 console.log(Sieb(100));
 
 
 function KastenErstellen(){
-var max = document.getElementById("userInput").value;
-console.log(Sieb(max));
+    var max = document.getElementById("userInput").value;
+ 
+    console.log(Sieb(max));
 }
