@@ -22,12 +22,12 @@ function Sieb(max) {
         document.getElementById("zahlen").innerHTML = "";
         document.getElementById("primZahlen").innerHTML = "";    
 
-        await setTimeout(() => {
+        setTimeout(() => {
             document.getElementById("primZahlen").innerHTML = primZahlen;
             document.getElementById("zahlen").innerHTML = numbers;
         }, 3000);
 
-        await setTimeout(() => {
+        setTimeout(() => {
             for (var i = 0; i <= numbers.length; i++){
                 if (numbers[i] % primZahlen[primZahlen.length - 1] == 0){
                     numbers.splice(i, 1);
