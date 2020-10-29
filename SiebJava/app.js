@@ -17,9 +17,8 @@ function Sieb() {
     document.getElementById("zahlen").innerHTML = numbers;
 
     while (numbers.length > 0) {
+        printArrays(primZahlen, numbers);
         primZahlen.push(numbers.shift());
-
-        setTimeout(plsWait(primZahlen), 3000);
 
         for (var i = 0; i <= numbers.length; i++){
             if (numbers[i] % primZahlen[primZahlen.length - 1] == 0){
@@ -34,10 +33,12 @@ function createTable(numbers){
 
 }
 
-function plsWait(primZahlen) {
-    setTimeout(printArrays(primZahlen), 3000);
+function printArrays(primZahlen, numbers) {
+    document.getElementById("primZahlen").innerHTML = primZahlen;
+    document.getElementById("zahlen").innerHTML = numbers;
+    setTimeout(plsWait, 3000);
 }
 
-function printArrays(primZahlen) {
-    document.getElementById("primZahlen").innerHTML = primZahlen;
+function plsWait() {
+    console.log("w");
 }
