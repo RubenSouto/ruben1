@@ -1,5 +1,3 @@
-var waitVar;
-
 /**
  * Erstellt Array mit Zahlen (0 -max)
  * Alle Primzahlen kommen in den Array: primZahlen
@@ -9,15 +7,15 @@ function Sieb() {
     var numbers = [];
     var primZahlen = [];
     var max = document.getElementById("userInput").value;
+    document.getElementById("zahlen").innerHTML = "";
     
     for(var i= 2; i <= max; i++){
         numbers.push(i);
     }
 
-    document.getElementById("zahlen").innerHTML = numbers;
+    displayNumbers(numbers);
 
     while (numbers.length > 0) {
-        printArrays(primZahlen, numbers);
         primZahlen.push(numbers.shift());
 
         for (var i = 0; i <= numbers.length; i++){
@@ -26,6 +24,7 @@ function Sieb() {
             }
         }
     }
+    displayPrimaryNumbers(primZahlen);
     return primZahlen;
 }
 
@@ -33,12 +32,26 @@ function createTable(numbers){
 
 }
 
-function printArrays(primZahlen, numbers) {
-    document.getElementById("primZahlen").innerHTML = primZahlen;
-    document.getElementById("zahlen").innerHTML = numbers;
-    setTimeout(plsWait, 3000);
+function displayPrimaryNumbers(primZahlen) {
+    for (var i = 0; i < primZahlen.length; i++) {
+        if(primZahlen[i -1] % 20 == 0){
+            document.getElementById("primZahlen").innerHTML += primZahlen[i] + ", ";
+            document.getElementById("primZahlen").innerHTML += "<br>";
+        }
+        else{
+            document.getElementById("primZahlen").innerHTML += primZahlen[i] + ", ";
+        }
+    }
 }
 
-function plsWait() {
-    console.log("w");
+function displayNumbers(numbers) {
+    for (var i = 0; i < numbers.length - 1; i++) {
+        if(numbers[i -1] % 10 == 0){
+            document.getElementById("zahlen").innerHTML += numbers[i] + ", ";
+            document.getElementById("zahlen").innerHTML += "<br>";
+        }
+        else{
+            document.getElementById("zahlen").innerHTML += numbers[i] + ", ";
+        }
+    }
 }
