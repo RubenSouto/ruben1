@@ -2,7 +2,7 @@
  * Erstellt Array mit Zahlen (0 -max)
  * Alle Primzahlen kommen in den Array: primZahlen
  * dieser wird zurück gegeben
- */
+ 
 function Sieb() {
     var numbers = [];
     var primZahlen = [];
@@ -53,5 +53,38 @@ function displayNumbers(numbers) {
         else{
             document.getElementById("zahlen").innerHTML += numbers[i] + ", ";
         }
+    }
+}
+*/
+
+var data = {
+    anzahl: document.getElementById("userInput").value,
+    timeout: 1000,
+    zahlen : [
+        {
+            zeile: 0, spalte: 0, wert:null, ausgesiebt: false
+        }
+    ]
+}
+
+var oktopus = {
+    initEverything: function (params) {
+        
+    },
+
+    dataInit: function (params) {
+        
+    }
+}
+
+var view = {
+
+    init: function(params) {
+        
+    },
+
+
+    render: function(){
+
     }
 }
