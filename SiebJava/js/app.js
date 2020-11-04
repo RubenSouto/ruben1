@@ -56,7 +56,7 @@ function displayNumbers(numbers) {
     }
 }
 */
-var tabelle = document.getElementById("tabelle");
+var tabelle = $("#tabelle");
 
 var data = {
     timeout: 1000,
@@ -81,16 +81,19 @@ var oktopus = {
 
     dataInit: function () {
         
-        data.anzahl = document.getElementById("userInput").value;
+        data.anzahl = $("#userInput").value;
 
-        for(var i = 0; i < data.anzahl; i++){
+
+        for(var i = 1; i <= data.anzahl; i++){
+
+
             if(data.aktuelleSpalte == data.gesSpalte){
-                data.zahlen.push(aktuelleZeile, aktuelleSpalte, i, true);
+                data.zahlen.push({aktuelleZeile: data.aktuelleZeile, aktuelleSpalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
                 data.aktuelleSpalte = 0;
                 data.aktuelleZeile++;
             }
             else{
-                data.zahlen.push(aktuelleZeile, aktuelleSpalte, i, true);
+                data.zahlen.push({aktuelleZeile: data.aktuelleZeile, aktuelleSpalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
                 data.aktuelleSpalte++;
             }
         }
@@ -108,7 +111,7 @@ var oktopus = {
 var view = {
 
     init: function(anzahl) {
-        
+        console.log(data.zahlen);
     },
 
 
