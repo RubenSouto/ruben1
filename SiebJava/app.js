@@ -56,35 +56,63 @@ function displayNumbers(numbers) {
     }
 }
 */
+var tabelle = document.getElementById("tabelle");
 
 var data = {
-    anzahl: document.getElementById("userInput").value,
     timeout: 1000,
-    zahlen : [
-        {
-            zeile: 0, spalte: 0, wert:null, ausgesiebt: false
-        }
-    ]
+
+    gesSpalte: 10,
+    aktuelleSpalte: 0,
+    aktuelleZeile: 0,
+
+    anzahl: null,
+    zahlen : [],
+
+    aktuellePrimzahl: null,
+    zuletztGesiebtesZahlenfeld: null
 }
 
 var oktopus = {
-    initEverything: function (params) {
-        
+    initEverything: function () {
+        oktopus.dataInit();
+        view.init(data.anzahl);
+        view.render(data.zahlen);
     },
 
-    dataInit: function (params) {
+    dataInit: function () {
         
+        data.anzahl = document.getElementById("userInput").value;
+
+        for(var i = 0; i < data.anzahl; i++){
+            if(data.aktuelleSpalte == data.gesSpalte){
+                data.zahlen.push(aktuelleZeile, aktuelleSpalte, i, true);
+                data.aktuelleSpalte = 0;
+                data.aktuelleZeile++;
+            }
+            else{
+                data.zahlen.push(aktuelleZeile, aktuelleSpalte, i, true);
+                data.aktuelleSpalte++;
+            }
+        }
+    },
+
+    nextPrimzahl: function () {
+        setTimeout(this.aussieben, data.timeout);
+    },
+
+    aussieben: function (){
+
     }
 }
 
 var view = {
 
-    init: function(params) {
+    init: function(anzahl) {
         
     },
 
 
-    render: function(){
+    render: function(zahlen){
 
     }
 }
