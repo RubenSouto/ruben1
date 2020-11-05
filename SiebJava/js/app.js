@@ -56,12 +56,14 @@ function displayNumbers(numbers) {
     }
 }
 */
+
 var tabelle = $("#tabelle");
+var numbers = [];
 
 var data = {
     timeout: 1000,
 
-    gesSpalte: 10,
+    gesSpalte: 9,
     aktuelleSpalte: 0,
     aktuelleZeile: 0,
 
@@ -74,43 +76,69 @@ var data = {
 
 var oktopus = {
     initEverything: function () {
+        oktopus.dataClear();
         oktopus.dataInit();
         view.init(data.anzahl);
         view.render(data.zahlen);
     },
 
+    dataClear: function (){
+        data.zahlen = [];
+        data.aktuelleSpalte = 0;
+        data.aktuelleZeile = 0;
+    },
+
     dataInit: function () {
-        
-        data.anzahl = $("#userInput").value;
+        var zeile;
+        data.anzahl = $("#userInput").val();
 
-
-        for(var i = 1; i <= data.anzahl; i++){
-
-
+        for(var i = 2; i <= data.anzahl; i++){
             if(data.aktuelleSpalte == data.gesSpalte){
                 data.zahlen.push({aktuelleZeile: data.aktuelleZeile, aktuelleSpalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
                 data.aktuelleSpalte = 0;
+                zeile = tabelle.insertRow(aktuelleZeile);
                 data.aktuelleZeile++;
             }
+
             else{
                 data.zahlen.push({aktuelleZeile: data.aktuelleZeile, aktuelleSpalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
+                
                 data.aktuelleSpalte++;
             }
         }
+
+        for (var i = 2; i < data.anzahl; i++) {
+            numbers.push(i);
+        }      
     },
 
     nextPrimzahl: function () {
-        setTimeout(this.aussieben, data.timeout);
+        for (var i = 0; i < data.anzahl; i++) {
+            setTimeout(oktopus.aussieben(data.aktuellePrimzahl), data.timeout);  
+        }
     },
 
-    aussieben: function (){
+    aussieben: function (aktuellePrimzahl){
 
+        data.aktuellePrimzahl = numbers.shift();
+
+        for (var i = 0; i <= numbers.length; i++){
+            if (numbers[i] % data.aktuellePrimzahl == 0){
+                numbers.splice(i, 1);
+            }
+        }        
     }
 }
 
 var view = {
 
     init: function(anzahl) {
+        
+        for (var i = 1; i <= anzahl; i++) {
+            if (i % 10 == 0) {
+                tabelle.insertRow();
+            }
+        }
         console.log(data.zahlen);
     },
 
