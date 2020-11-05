@@ -57,15 +57,17 @@ function displayNumbers(numbers) {
 }
 */
 
-const tabelle = $("#tabelle");
+//const tabelle = $("#tabelle");
+
+const rowTemplate = '<tr></tr>';
 var numbers = [];
 
 var data = {
     timeout: 1000,
 
-    gesSpalte: 10,
-    aktuelleSpalte: 1,
-    aktuelleZeile: 1,
+    gesSpalte: 9,
+    aktuelleSpalte: 0,
+    aktuelleZeile: 0,
 
     anzahl: null,
     zahlen : [],
@@ -80,13 +82,14 @@ var oktopus = {
         oktopus.dataInit();
         view.init();
         view.render();
+        oktopus.nextPrimzahl();
     },
 
     dataClear: function (){
         $("#tabelle > tbody").empty();
         data.zahlen = [];
-        data.aktuelleSpalte = 1;
-        data.aktuelleZeile = 1;
+        data.aktuelleSpalte = 0;
+        data.aktuelleZeile = 0;
     },
 
     dataInit: function () {
@@ -98,7 +101,7 @@ var oktopus = {
 
             if(data.aktuelleSpalte == data.gesSpalte){
                 data.zahlen.push({zeile: data.aktuelleZeile, spalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
-                data.aktuelleSpalte = 1;
+                data.aktuelleSpalte = 0;
                 data.aktuelleZeile++;
             }
 
@@ -115,8 +118,8 @@ var oktopus = {
     },
 
     nextPrimzahl: function () {
-        for (var i = 0; i < data.anzahl; i++) {
-            setTimeout(oktopus.aussieben(data.aktuellePrimzahl), data.timeout);  
+        while (numbers.length != 0) {
+            setTimeout(oktopus.aussieben(), data.timeout);  
         }
     },
 
@@ -124,12 +127,13 @@ var oktopus = {
     aussieben: function (){
         data.aktuellePrimzahl = numbers.shift();
 
+        console.log(data.aktuellePrimzahl);
         for (var i = 0; i <= data.zahlen.length; i++){
             if (numbers[i] % data.aktuellePrimzahl == 0){
                 numbers.splice(i, 1);
                 data.zahlen[i].ausgesiebt = true;
             }
-        }       
+        }
         view.render() 
     }
 }
@@ -137,21 +141,29 @@ var oktopus = {
 var view = {
 
     init: function() {
-        for (var i = 0; i < data.aktuelleZeile; i++) {
-            $('#tabelle > tbody').append('<tr></tr>');
+        for (var i = 0; i <= data.aktuelleZeile; i++) {
+            $('#tabelle > tbody').append(rowTemplate);
 
             for (var y = 0; y < data.gesSpalte; y++) {
-                $('#tabelle > tbody tr:last').append('<td>1</td>');//.attr(/{{id}}/g, "zeile" + i + "Spalte"+ y);
+                var cellId = '<td id="counter"></td>';
+                var replacement = "zeile" + i + "Spalte" + y;
+
+                cellId = cellId.replace("counter", replacement);
+                $('#tabelle > tbody tr:last').append(cellId);
             }
+
         }
     },
 
 
     render: function(){
+        
         for (var i = 0; i < data.zahlen.length; i++) {
+
             if (data.zahlen[i].ausgesiebt == false) {
-                $("#zeile"+ data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte).html(data.zahlen[i].nummer);
-            }
+                var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
+                $("#" +cellId).html(data.zahlen[i].nummer);
+            }   
         }
     }
 }
