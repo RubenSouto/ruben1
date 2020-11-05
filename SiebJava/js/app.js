@@ -90,6 +90,8 @@ var oktopus = {
         data.zahlen = [];
         data.aktuelleSpalte = 0;
         data.aktuelleZeile = 0;
+        data.aktuellePrimzahl = null;
+        numbers = [];
     },
 
     dataInit: function () {
@@ -132,9 +134,10 @@ var oktopus = {
             if (numbers[i] % data.aktuellePrimzahl == 0){
                 numbers.splice(i, 1);
                 data.zahlen[i].ausgesiebt = true;
+                console.log(data.zahlen[i].ausgesiebt);
             }
         }
-        view.render() 
+        setTimeout(view.render(), data.timeout);
     }
 }
 
@@ -157,7 +160,6 @@ var view = {
 
 
     render: function(){
-        
         for (var i = 0; i < data.zahlen.length; i++) {
 
             if (data.zahlen[i].ausgesiebt == false) {
