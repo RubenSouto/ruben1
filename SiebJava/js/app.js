@@ -2,64 +2,8 @@
  * Erstellt Array mit Zahlen (0 -max)
  * Alle Primzahlen kommen in den Array: primZahlen
  * dieser wird zurück gegeben
- 
-function Sieb() {
-    var numbers = [];
-    var primZahlen = [];
-    var max = document.getElementById("userInput").value;
-    document.getElementById("zahlen").innerHTML = "";
-    
-    for(var i= 2; i <= max; i++){
-        numbers.push(i);
-    }
-
-    displayNumbers(numbers);
-
-    while (numbers.length > 0) {
-        primZahlen.push(numbers.shift());
-
-        for (var i = 0; i <= numbers.length; i++){
-            if (numbers[i] % primZahlen[primZahlen.length - 1] == 0){
-                numbers.splice(i, 1);
-            }
-        }
-    }
-    displayPrimaryNumbers(primZahlen);
-    return primZahlen;
-}
-
-function createTable(numbers){
-
-}
-
-function displayPrimaryNumbers(primZahlen) {
-    for (var i = 0; i < primZahlen.length; i++) {
-        if(primZahlen[i -1] % 20 == 0){
-            document.getElementById("primZahlen").innerHTML += primZahlen[i] + ", ";
-            document.getElementById("primZahlen").innerHTML += "<br>";
-        }
-        else{
-            document.getElementById("primZahlen").innerHTML += primZahlen[i] + ", ";
-        }
-    }
-}
-
-function displayNumbers(numbers) {
-    for (var i = 0; i < numbers.length - 1; i++) {
-        if(numbers[i -1] % 10 == 0){
-            document.getElementById("zahlen").innerHTML += numbers[i] + ", ";
-            document.getElementById("zahlen").innerHTML += "<br>";
-        }
-        else{
-            document.getElementById("zahlen").innerHTML += numbers[i] + ", ";
-        }
-    }
-}
 */
 
-//const tabelle = $("#tabelle");
-
-const rowTemplate = '<tr></tr>';
 var numbers = [];
 
 var data = {
@@ -73,11 +17,11 @@ var data = {
     zahlen : [],
 
     aktuellePrimzahl: null,
-    //zuletztGesiebtesZahlenfeld: null
 }
 
 var oktopus = {
-    initEverything: function () {
+    initEverything: function ()
+    {
         oktopus.dataClear();
         oktopus.dataInit();
         view.init();
@@ -85,7 +29,8 @@ var oktopus = {
         oktopus.nextPrimzahl();
     },
 
-    dataClear: function (){
+    dataClear: function ()
+    {
         $("#tabelle > tbody").empty();
         data.zahlen = [];
         data.aktuelleSpalte = 0;
@@ -94,10 +39,9 @@ var oktopus = {
         numbers = [];
     },
 
-    dataInit: function () {
-        // var zeile;
+    dataInit: function () 
+    {
         data.anzahl = $("#userInput").val();
-        // zeile = tabelle.insertRow(data.aktuelleZeile);
 
         for(var i = 2; i <= data.anzahl; i++){
 
@@ -106,7 +50,6 @@ var oktopus = {
                 data.aktuelleSpalte = 0;
                 data.aktuelleZeile++;
             }
-
             else{
                 data.zahlen.push({zeile: data.aktuelleZeile, spalte: data.aktuelleSpalte, nummer: i, ausgesiebt: false});
                 data.aktuelleSpalte++;
@@ -119,14 +62,15 @@ var oktopus = {
         }      
     },
 
-    nextPrimzahl: function () {
+    nextPrimzahl: function () 
+    {
         while (numbers.length != 0) {
             setTimeout(oktopus.aussieben(), data.timeout);  
         }
     },
 
-    // aussieben muss noch fertig gemacht werden
-    aussieben: function (){
+    aussieben: function ()
+    {
         data.aktuellePrimzahl = numbers.shift();
 
         console.log(data.aktuellePrimzahl);
@@ -134,7 +78,6 @@ var oktopus = {
             if (numbers[i] % data.aktuellePrimzahl == 0){
                 numbers.splice(i, 1);
                 data.zahlen[i].ausgesiebt = true;
-                console.log(data.zahlen[i].ausgesiebt);
             }
         }
         setTimeout(view.render(), data.timeout);
@@ -142,10 +85,10 @@ var oktopus = {
 }
 
 var view = {
-
-    init: function() {
+    init: function()
+    {
         for (var i = 0; i <= data.aktuelleZeile; i++) {
-            $('#tabelle > tbody').append(rowTemplate);
+            $('#tabelle > tbody').append('<tr></tr>');
 
             for (var y = 0; y < data.gesSpalte; y++) {
                 var cellId = '<td id="counter"></td>';
@@ -154,17 +97,16 @@ var view = {
                 cellId = cellId.replace("counter", replacement);
                 $('#tabelle > tbody tr:last').append(cellId);
             }
-
         }
     },
 
 
-    render: function(){
+    render: function()
+    {
         for (var i = 0; i < data.zahlen.length; i++) {
-
             if (data.zahlen[i].ausgesiebt == false) {
                 var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
-                $("#" +cellId).html(data.zahlen[i].nummer);
+                $("#" + cellId).html(data.zahlen[i].nummer);
             }   
         }
     }
