@@ -77,7 +77,7 @@ var oktopus = {
         for (var i = 0; i <= data.zahlen.length; i++){
             if (numbers[i] % data.aktuellePrimzahl == 0){
                 numbers.splice(i, 1);
-                data.zahlen[i].ausgesiebt = true;
+                data.zahlen[i].ausgesiebt = false;
             }
         }
         setTimeout(view.render(), data.timeout);
@@ -90,7 +90,7 @@ var view = {
         for (var i = 0; i <= data.aktuelleZeile; i++) {
             $('#tabelle > tbody').append('<tr></tr>');
 
-            for (var y = 0; y < data.gesSpalte; y++) {
+            for (var y = 0; y <= data.gesSpalte; y++) {
                 var cellId = '<td id="counter"></td>';
                 var replacement = "zeile" + i + "Spalte" + y;
 
@@ -103,6 +103,7 @@ var view = {
 
     render: function()
     {
+        console.log(data.zahlen);
         for (var i = 0; i < data.zahlen.length; i++) {
             if (data.zahlen[i].ausgesiebt == false) {
                 var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
