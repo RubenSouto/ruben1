@@ -73,11 +73,17 @@ var oktopus = {
     {
         data.aktuellePrimzahl = numbers.shift();
 
-        console.log(data.aktuellePrimzahl);
-        for (var i = 0; i <= data.zahlen.length; i++){
-            if (numbers[i] % data.aktuellePrimzahl == 0){
+        //console.log(data.aktuellePrimzahl);
+        for (var i = 0; i < numbers.length; i++){
+            if (numbers[i] % data.aktuellePrimzahl == 0) {
                 numbers.splice(i, 1);
-                data.zahlen[i].ausgesiebt = false;
+            }
+        }
+
+        for (var y = 0; y < data.zahlen.length; y++) {
+            if (data.zahlen[y].nummer % data.aktuellePrimzahl == 0 && data.zahlen[y].ausgesiebt == false) {
+                console.log(data.aktuellePrimzahl);
+                data.zahlen[y].ausgesiebt = true;  
             }
         }
         setTimeout(view.render(), data.timeout);
@@ -103,12 +109,12 @@ var view = {
 
     render: function()
     {
-        console.log(data.zahlen);
         for (var i = 0; i < data.zahlen.length; i++) {
             if (data.zahlen[i].ausgesiebt == false) {
                 var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
                 $("#" + cellId).html(data.zahlen[i].nummer);
             }   
         }
+        setTimeout(oktopus.nextPrimzahl(), data.timeout);
     }
 }
