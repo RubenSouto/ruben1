@@ -65,7 +65,8 @@ var oktopus = {
     nextPrimzahl: function () 
     {
         while (numbers.length != 0) {
-            setTimeout(oktopus.aussieben(), data.timeout);  
+            //setTimeout(oktopus.aussieben(), data.timeout);  
+            oktopus.aussieben();
         }
     },
 
@@ -86,7 +87,8 @@ var oktopus = {
                 data.zahlen[y].ausgesiebt = true;  
             }
         }
-        setTimeout(view.render(), data.timeout);
+        //setTimeout(view.render(), data.timeout);
+        view.render();
     }
 }
 
@@ -115,6 +117,7 @@ var view = {
                 $("#" + cellId).html(data.zahlen[i].nummer);
             }   
         }
-        setTimeout(oktopus.nextPrimzahl(), data.timeout);
+        //setTimeout(oktopus.nextPrimzahl(), data.timeout);
+        oktopus.nextPrimzahl();
     }
 }
