@@ -7,7 +7,7 @@
 var numbers = [];
 
 var data = {
-    timeout: 1000,
+    timeout: 100000,
 
     gesSpalte: 9,
     aktuelleSpalte: 0,
@@ -20,13 +20,22 @@ var data = {
 }
 
 var oktopus = {
+
+    initSomeStuff: function ()
+    {
+        //Einzelne schritte
+        view.render();
+        oktopus.aussieben();
+        //console.log("funktioniert");
+        setTimeout(oktopus.nextPrimzahl(), 1000);
+    },
+
     initEverything: function ()
     {
         oktopus.dataClear();
         oktopus.dataInit();
         view.init();
-        view.render();
-        oktopus.nextPrimzahl();
+        setTimeout(oktopus.nextPrimzahl(), 1000);
     },
 
     dataClear: function ()
@@ -64,9 +73,8 @@ var oktopus = {
 
     nextPrimzahl: function () 
     {
-        while (numbers.length != 0) {
-            //setTimeout(oktopus.aussieben(), data.timeout);  
-            oktopus.aussieben();
+        if (numbers.length != 0) {
+            setTimeout(oktopus.initSomeStuff(), 1000);
         }
     },
 
@@ -74,7 +82,6 @@ var oktopus = {
     {
         data.aktuellePrimzahl = numbers.shift();
 
-        //console.log(data.aktuellePrimzahl);
         for (var i = 0; i < numbers.length; i++){
             if (numbers[i] % data.aktuellePrimzahl == 0) {
                 numbers.splice(i, 1);
@@ -82,13 +89,10 @@ var oktopus = {
         }
 
         for (var y = 0; y < data.zahlen.length; y++) {
-            if (data.zahlen[y].nummer % data.aktuellePrimzahl == 0 && data.zahlen[y].ausgesiebt == false) {
-                console.log(data.aktuellePrimzahl);
-                data.zahlen[y].ausgesiebt = true;  
+            if (data.zahlen[y].nummer % data.aktuellePrimzahl == 0 && data.zahlen[y].ausgesiebt == false && data.zahlen[y].nummer != data.aktuellePrimzahl) {
+                data.zahlen[y].ausgesiebt = true;
             }
         }
-        //setTimeout(view.render(), data.timeout);
-        view.render();
     }
 }
 
@@ -112,12 +116,15 @@ var view = {
     render: function()
     {
         for (var i = 0; i < data.zahlen.length; i++) {
+            var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
             if (data.zahlen[i].ausgesiebt == false) {
-                var cellId = "zeile" + data.zahlen[i].zeile + "Spalte"+ data.zahlen[i].spalte;
                 $("#" + cellId).html(data.zahlen[i].nummer);
-            }   
+                //console.log(data.zahlen[i].nummer);
+            }
+            else{
+                $("#" + cellId).html(" ");
+                //console.log(data.zahlen[i].nummer);
+            }
         }
-        //setTimeout(oktopus.nextPrimzahl(), data.timeout);
-        oktopus.nextPrimzahl();
     }
 }
