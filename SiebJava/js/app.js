@@ -7,7 +7,7 @@
 var numbers = [];
 
 var data = {
-    timeout: 100000,
+    timeout: 1000,
 
     gesSpalte: 9,
     aktuelleSpalte: 0,
@@ -23,11 +23,13 @@ var oktopus = {
 
     initSomeStuff: function ()
     {
-        //Einzelne schritte
-        view.render();
-        oktopus.aussieben();
-        //console.log("funktioniert");
-        setTimeout(oktopus.nextPrimzahl(), 1000);
+        if (numbers.length != 0) {
+            //Einzelne schritte
+            view.render();
+            oktopus.aussieben();
+            //console.log("funktioniert");
+            setTimeout(oktopus.initSomeStuff, data.timeout);
+        }
     },
 
     initEverything: function ()
@@ -35,7 +37,7 @@ var oktopus = {
         oktopus.dataClear();
         oktopus.dataInit();
         view.init();
-        setTimeout(oktopus.nextPrimzahl(), 1000);
+        setTimeout(oktopus.initSomeStuff, data.timeout);
     },
 
     dataClear: function ()
