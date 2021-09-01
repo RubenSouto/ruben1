@@ -20,6 +20,12 @@ var data = {
 }
 
 var oktopus = {
+    updateTimeout: function () {
+        slider = document.getElementById("myRange"),
+        output = document.getElementById("demo"),
+        output.innerHTML = slider.value/1000 + "s"; // Display the default slider value
+        data.timeout = slider.value;
+    },
 
     initSomeStuff: function ()
     {
@@ -37,7 +43,8 @@ var oktopus = {
         oktopus.dataClear();
         oktopus.dataInit();
         view.init();
-        setTimeout(oktopus.initSomeStuff, data.timeout);
+        //setTimeout(oktopus.initSomeStuff, data.timeout);
+        oktopus.initSomeStuff();
     },
 
     dataClear: function ()
@@ -105,7 +112,7 @@ var view = {
             $('#tabelle > tbody').append('<tr></tr>');
 
             for (var y = 0; y <= data.gesSpalte; y++) {
-                var cellId = '<td id="counter"></td>';
+                var cellId = '<td id="counter" ></td>';
                 var replacement = "zeile" + i + "Spalte" + y;
 
                 cellId = cellId.replace("counter", replacement);

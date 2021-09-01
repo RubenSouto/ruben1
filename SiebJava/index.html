@@ -4,6 +4,7 @@
         <title>Sieb</title>
         <script src="js/jquery-3.5.1.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet">
         <style>
             * {
                 padding-top: 1%;
@@ -21,8 +22,20 @@
             <div class="col align-self-start">
             </div>
             <div class="col align-self-center d-flex justify-content-center">
-                <input type="text" id="userInput" class="input-group-text">
+                <input type="text" id="userInput" class="input-group-text" placeholder="Gebe Anzahl Zahlen ein">
                 <button onclick="oktopus.initEverything()" class="btn btn-primary">Sieb starten</button>
+            </div>
+            <div class="col align-self-end d-flex justify-content-center">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col align-self-start">
+            </div>
+            <div class="col align-self-center d-flex justify-content-center">
+                <p>Timeout:</p>
+                <input type="range" min="0" max="10000" value="0" class="slider" id="myRange" step="1000" oninput="oktopus.updateTimeout()">
+                <p id="demo"></p>
             </div>
             <div class="col align-self-end d-flex justify-content-center">
             </div>
