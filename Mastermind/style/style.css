@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(240, 166, 71);
+}
+
+circle {
+    stroke: black;
+}
+
+circle.mushroom {
+    stroke-width: 5px;
+}
+
+circle.nail {
+    stroke-width: 3px;
+}
+
+circle.red {
+    fill: red;
+}
+
+circle.blue {
+    fill: blue;
+}
+
+circle.yellow {
+    fill: yellow;
+}
+
+circle.violet {
+    fill: violet;
+}
+
+circle.black {
+    fill: black;
+}
+
+circle.green {
+    fill: green;
+}
+
+circle.antiquewhite {
+    fill: antiquewhite
+}
