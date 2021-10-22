@@ -3,6 +3,7 @@ body {
 }
 
 circle {
+    fill: white;
     stroke: black;
 }
 
@@ -30,14 +31,10 @@ circle.violet {
     fill: violet;
 }
 
-circle.black {
-    fill: black;
-}
-
 circle.green {
     fill: green;
 }
 
-circle.antiquewhite {
-    fill: antiquewhite
+circle.orange {
+    fill: orange
 }
