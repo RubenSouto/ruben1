@@ -3,5 +3,7 @@ function render(content) {
 }
 
 function implementSolution(id, color) {
-    document.getElementById(`${id}`).className += color;
+    // console.log(color);
+    // console.log(id);
+    document.getElementById(id).classList.add(color);
 }

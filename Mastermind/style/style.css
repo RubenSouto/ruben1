@@ -36,5 +36,13 @@ circle.green {
 }
 
 circle.orange {
-    fill: orange
+    fill: orange;
+}
+
+circle.black {
+    fill: black;
+}
+
+circle.grey {
+    fill: grey;
 }

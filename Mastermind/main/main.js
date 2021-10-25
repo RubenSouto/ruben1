@@ -6,8 +6,8 @@ render(content.createTable());
 var color = "";
 var farben = content.randomizeSolution();
 // console.log(farben);
-for (let index = 0; index < farben.length; index++) {
-    switch (farben[index]) {
+for (let index = 1; index <= farben.length; index++) {
+    switch (farben[index-1]) {
         case 1: 
             color = "red";
             break;
