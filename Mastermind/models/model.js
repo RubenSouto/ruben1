@@ -1,4 +1,3 @@
-var table = "";
 var idMushroom = "";
 var idNail = "";
 var row = 0;
@@ -9,8 +8,8 @@ class model{
     }
 
     createTable() {
-        table = "<div><svg viewBox='0 0 1000 120'> <circle class='mushroom' id='1' cx='255' cy='55' r='35'/><circle class='mushroom' id='2' cx='365' cy='55' r='35'/><circle class='mushroom' id='3' cx='475' cy='55' r='35'/><circle class='mushroom' id='4' cx='585' cy='55' r='35'/></div>"
-        
+        var table = "<div><svg viewBox='0 0 1000 120'> <circle class='mushroom' id='1' cx='255' cy='55' r='35'/><circle class='mushroom' id='2' cx='365' cy='55' r='35'/><circle class='mushroom' id='3' cx='475' cy='55' r='35'/><circle class='mushroom' id='4' cx='585' cy='55' r='35'/></div>"
+
         for (let index = 0; index < 12; index++) {
             row++;
 
@@ -33,6 +32,7 @@ class model{
             idNail = "n" + 4 + row;
             table += "<circle class='nail' id=\"" + idNail + "\" cx='730' cy='80' r='15'/></svg></div>";
         }
+
         return table;
     }
 

@@ -1,12 +1,12 @@
 var content = new model();
-// console.log("main");
 render(content.createTable());
 
 
 var color = "";
 var farben = content.randomizeSolution();
-// console.log(farben);
+
 for (let index = 1; index <= farben.length; index++) {
+
     switch (farben[index-1]) {
         case 1: 
             color = "red";
@@ -27,6 +27,6 @@ for (let index = 1; index <= farben.length; index++) {
             color = "orange";
             break;
     }
-    // console.log(color);
+
     implementSolution(index, color);
 }
