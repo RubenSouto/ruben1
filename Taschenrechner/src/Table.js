@@ -7,7 +7,7 @@ class Table{
     this.setZeichen();
     var height = 0;
     var width = 0;
-    var content = "";
+    var content = "<table id='table'>";
     var counter = 0;
     
     while(height < 7){
@@ -31,6 +31,7 @@ class Table{
       width = 0;
       height++;
     }
+    content += "</table>";
     return content;
   }
 }

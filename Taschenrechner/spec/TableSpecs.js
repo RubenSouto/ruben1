@@ -8,7 +8,7 @@ describe("Table", function(){
 
   it("schould be able to generate", function(){
     //Der Table sollte dann 4 Spalten und 7 Reihen beinhalten, wobei die erste Reihe nur ein "Kästchen" beinhaltet (für Eingabe)
-    expect($("#table").childElementCount).toEqual(32);
+    expect($("#table").childElementCount).toEqual(7);
   });
 
   it("should be able to generate the right Array for layout", function(){
