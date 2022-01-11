@@ -1,7 +1,8 @@
 class View{
-    constructor(){
+    loadContent(){
         var table = new Table();
-        var content = table.generate()
-        document.getElementById("table").innerHTML(content);
+        var tableContent = table.generate();
+        $("#table").innerHTML += tableContent;
+        alert("Hallo");
     }
 }
