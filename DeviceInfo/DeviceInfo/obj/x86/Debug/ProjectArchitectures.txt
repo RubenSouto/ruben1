@@ -1,0 +1,1 @@
+C:\Users\ruben\source\repos\DeviceInfo\DeviceInfo\DeviceInfo.csproj;x86
